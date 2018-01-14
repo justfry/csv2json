@@ -14,7 +14,7 @@ const convertCsvToJson = (pathToFile = pathoffile) => {
             console.log("An Error Has Occured")
             console.log(err)
         } 
-        var json = JSON.stringify(result)
+        var json = JSON.stringify(result, null, 2)
         fs.writeFileSync(path.join(__dirname, "output", path.basename(pathToFile, '.csv') + '.json'), json)
     });
 }
