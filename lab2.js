@@ -1,9 +1,9 @@
 const fs = require('fs')
 const path = require('path')
-var Converter = require("csvtojson").Converter;
+const Converter = require("csvtojson").Converter;
 
 const pathoffile = path.join(__dirname, 'data-to-convert', 'customer-data.csv') 
-var converter = new Converter({})
+const converter = new Converter({})
 
 const convertCsvToJson = (pathToFile = pathoffile) => {
 
@@ -14,9 +14,10 @@ const convertCsvToJson = (pathToFile = pathoffile) => {
             console.log("An Error Has Occured")
             console.log(err)
         } 
-        var json = JSON.stringify(result, null, 2)
+        let json = JSON.stringify(result, null, 2)
         fs.writeFileSync(path.join(__dirname, "output", path.basename(pathToFile, '.csv') + '.json'), json)
     });
+    console.log("Converting has ended")
 }
 convertCsvToJson(process.argv[2])
 
